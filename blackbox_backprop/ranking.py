@@ -2,11 +2,11 @@ import torch
 
 
 def rank(seq):
-    return torch.argsort(torch.argsort(seq).flip(1))
+    return torch.argsort(torch.argsort(seq))
 
 
 def rank_normalised(seq):
-    return (rank(seq) + 1).float() / seq.size()[1]
+    return (rank(seq) + 1).float() / seq.size()[0]
 
 
 class TrueRanker(torch.autograd.Function):
